@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5 RA2</title>
+</head>
+
+<body>
+
+    <body>
+        <h2>Tablas de multiplicar</h2>
+        <script>
+            const N = parseInt(prompt("¿Cuántas tablas de multiplicar quieres ver?"));
+
+            if (isNaN(N)) {
+                document.write("Error: Debes introducir un número válido.");
+            } else {
+                for (let i = 1; i <= N; i++) {
+                    document.write(`<h3>Tabla del ${i}</h3>`);
+                    for (let j = 1; j <= 10; j++) {
+                        document.write(`${i} x ${j} = ${i * j}<br>`);
+                    }
+                    document.write("<hr>");
+                }
+            }
+        </script>
+    </body>
+
+</html>

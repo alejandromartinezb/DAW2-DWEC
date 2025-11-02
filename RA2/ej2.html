@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 RA2</title>
+</head>
+
+<body>
+    <h2>El menor de tres números</h2>
+    <script>
+        const n1 = parseFloat(prompt("Introduce el primer número:"));
+        const n2 = parseFloat(prompt("Introduce el segundo número:"));
+        const n3 = parseFloat(prompt("Introduce el tercer número:"));
+
+        if (!isNaN(n1) && !isNaN(n2) && !isNaN(n3)) {
+            const menor = Math.min(n1, n2, n3);
+            document.write(`El número menor es: ${menor}`);
+        } else {
+            document.write("Error: todos los valores deben ser números.");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 RA2</title>
+</head>
+
+<body>
+    <p>Aclaración respecto a la sintaxis usada: soy repetidor de otro centro</p>
+    <h2>Comprobación de edad</h2>
+    <script>
+        const nombre = prompt("Introduce tu nombre:");
+        const edad = parseInt(prompt("Introduce tu edad:"));
+
+        if (!isNaN(edad)) {
+            const tipo = edad >= 18 ? "mayor" : "menor"; // operador condicional ternario
+            document.write(`Hola ${nombre}, tienes ${edad} años, eres ${tipo} de edad.`); //output
+        } else {
+            document.write("Error: la edad introducida no es un número válido.");
+        }
+    </script>
+</body>
+
+</html>

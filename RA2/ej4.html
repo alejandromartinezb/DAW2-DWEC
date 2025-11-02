@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4 RA2</title>
+</head>
+<body>
+    <body>
+  <h2>Suma hasta superar 100</h2>
+  <script>
+    let suma = 0;
+    let contador = 0;
+
+    while (suma <= 100) {
+      const num = parseFloat(prompt("Introduce un número:"));
+      if (isNaN(num)) {
+        alert("Debes introducir un número válido.");
+        continue;
+      }
+      suma += num;
+      contador++;
+    }
+
+    document.write(`Total acumulado: ${suma.toFixed(2)}<br>`);
+    document.write(`Cantidad de números introducidos: ${contador}`);
+  </script>
+</body>
+</html>
