@@ -1,0 +1,1 @@
+window.alert('Hola soy Alejandro desde un archivo externo.')
