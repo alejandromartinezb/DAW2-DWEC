@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butacas cine</title>
+</head>
+
+<style>
+    .titulo {
+        text-align: center;
+    }
+
+    .butaca {
+        border-style: solid;
+        height: 40px;
+        width: 40px;
+        background-color: green;
+
+    }
+
+    .butaca.seleccionada {
+        background-color: red;
+    }
+
+    .butaca.reservada {
+        background-color: grey;
+    }
+
+    .sala {
+        display: grid;
+        grid-template-columns: repeat(20, 50px);
+        gap: 5px;
+        margin: 5px;
+        justify-content: center;
+    }
+</style>
+
+<body>
+    <h1 class="titulo">RESERVAS DE CINE CARLOS III</h1>
+
+    <!-- <div id="" class="butaca"></div> -->
+    <div id="sala" class="sala"></div>
+
+
+    <div id="registro_reservas" style="display: flex; justify-content: center; gap: 10px;">
+        <label for="reservas">Total reservas:</label>
+        <input type="text" id="reservas" disabled>
+
+        <button id="guardar">Guardar</button>
+        <button id="limpiar">Limpiar</button>
+    </div>
+
+
+    <script>
+        // Constantes de elementos
+        const sala = document.getElementById("sala");
+        const reservas_input = document.getElementById("reservas");
+        reservas_input.value = 0;
+
+        const guardar_btn = document.getElementById("guardar");
+        const limpiar_btn = document.getElementById("limpiar");
+
+
+        function dibujarButaca(i, j) {
+            const butaca = document.createElement("div");
+            butaca.classList.add("butaca");
+            butaca.id = i + "-" + j;
+            if (localStorage.getItem(butaca.id) == "reservada") {
+                butaca.classList.add("reservada");
+            }
+            butaca.addEventListener("click", () => {
+                // Si la butaca ya está reservada, se sale de la función
+                if (butaca.classList.contains("reservada")) {
+                    return;
+                }
+                // Si no, continúa y se manipulan
+                butaca.classList.toggle("seleccionada")
+                if (butaca.classList.contains("seleccionada")) {
+                    reservas_input.value++
+                } else {
+                    reservas_input.value--
+                }
+            });
+            sala.appendChild(butaca);
+        }
+
+        for (let i = 0; i < 20; i++) {
+            for (let j = 0; j < 10; j++) {
+                dibujarButaca(i, j);
+            }
+        }
+
+        // Guardar butaca
+        guardar_btn.addEventListener("click", () => {
+            // Recorro el div sala para buscar las butacas con clase .seleccinada y guardar su id
+            console.log(sala);
+            for (const butaca of sala.children) {
+                if (butaca.classList.contains("seleccionada")) {
+                    localStorage.setItem(butaca.id, "reservada");
+                }
+            }
+
+
+
+        })
+
+        // Limpiar localStorage
+        limpiar_btn.addEventListener("click", () => {
+            localStorage.clear();
+        })
+
+
+
+    </script>
+</body>
+
+</html>
