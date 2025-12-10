@@ -8,7 +8,7 @@ btn_inicio.style.right = "20px";
 btn_inicio.style.position = "absolute";
 
 btn_inicio.addEventListener("click", () => {
-    window.location.href = "/DWEC/index.html";
+    window.location.href = "/";
 });
 
 document.body.appendChild(btn_inicio);
