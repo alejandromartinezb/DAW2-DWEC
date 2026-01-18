@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA5 Ejercicio 1 - Pasarela de pago</title>
+
+    <style>
+        .estilo_pasarela {
+            max-width: 20rem;
+            border: 10px solid black;
+            border-radius: 30px;
+            padding: 20px;
+            background-color: #dfdefd;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            gap: 0px 0px;
+            grid-auto-flow: row;
+            grid-template-areas:
+                "input input offset"
+                ". . ."
+                ". . ."
+                ". . ."
+                "clear validar validar";
+            gap: 1rem;
+        }
+
+        .borde_outset {
+            border: 5px outset;
+            border-radius: 10px;
+
+        }
+
+        .borde_inset {
+            border: 5px inset;
+            border-radius: 20px;
+        }
+
+        .boton {
+            background-color: #78a8f3;
+            display: grid;
+            place-items: center;
+            font-size: 200%;
+
+        }
+
+        .clear {
+            grid-area: clear;
+            background-color: white;
+            display: grid;
+            place-items: center;
+            font-size: 200%;
+
+            margin-right: 10px;
+        }
+
+        .validar {
+            grid-area: validar;
+            background-color: white;
+            display: grid;
+            place-items: center;
+            font-size: 200%;
+
+            margin-left: -10px;
+
+            /* Colapsar contenido */
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+
+        .input {
+            grid-area: input;
+            padding: 10px;
+            font-size: 150%;
+            background-color: white;
+            height: 1.5rem;
+
+            /* Colapsar contenido */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #offset {
+            grid-area: offset;
+        }
+
+        .mensajes {
+            max-width: 22rem;
+            border: 2px solid black;
+            padding: 5px;
+            font-size: large;
+            margin: 10px 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./ej1.js"></script>
+</body>
+
+</html>

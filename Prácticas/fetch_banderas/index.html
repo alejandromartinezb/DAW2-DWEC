@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de datos on Fetch</title>
+
+    <style>
+        .cuadricula {
+            display: grid;
+            grid-template-columns:repeat(4, 1fr);
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /*
+                AJAX (JavaScript Asíncrono y XML) Permite realizar mediante javascript
+                solicitudes al servidor (en segundo plano) y analizar su respuesta sin recargar la página
+                completa,mejorando la interactividad y velicidad de las aplicaciones.
+                     Ejemplos: Maps, gmail..
+        
+        */
+
+        /*
+                 Podemos utilizar la función fetch para lanzar consultas a servidores.
+                 Esta consulta se produce de forma asíncrona (devuelve una promesa) y
+                 nos devuelve un objeto response. En la actualizad 
+                 el formato más habitual de intercambio de datos con servidores con
+                 éste método es JSON.
+        
+        
+        */
+
+
+
+        let url = 'https://restcountries.com/v3.1/all?fields=name,flags'
+
+        //Con Fetch -> devuelve una promesa, tratamiento con then/catch
+        fetch(url)
+            .then(respuesta => respuesta.json())
+            .then(datos => mostrarDatos(datos, "Banderas por países"));
+
+
+
+
+        function mostrarDatos(datos, titulo) {
+
+            let cabecera = document.createElement("h2");
+            document.body.append(cabecera);
+            cabecera.innerText = titulo;
+
+            let contenedor_principal = document.createElement("div");
+            contenedor_principal.classList.add("cuadricula");
+            document.body.append(contenedor_principal);
+
+           console.log(datos)
+
+            for (let i in datos) {
+                let contenedor = document.createElement("div");
+                let nombre = document.createElement("h4");
+                let bandera = document.createElement("img");
+                contenedor_principal.append(contenedor);
+                contenedor.append(nombre);
+                contenedor.append(bandera);
+
+                
+
+                nombre.innerHTML = datos[i].name.official;
+                bandera.src = datos[i].flags.png;
+            }
+        }
+
+        function mostrarBandera(datos, titulo) {
+            let cabecera = document.createElement("h2");
+            document.body.append(cabecera);
+            cabecera.innerText = titulo;
+            let elemento = document.createElement("img");
+            document.body.append(elemento);
+            console.log(datos[0])
+
+            elemento.src = datos[0].flags.png;
+
+        }
+
+        // Como vemos todas las llamadas comparten la misma función para mostrar los datos,
+        // Por lo que la principal diferencia en la consulta asincrona de datos a servidores
+        // es el analisis de la información que nos llega y como queremos mostrarla.
+
+        // Ejercicio. Utiliza una consulta GET al siguiente API: restcointries.com
+        // Ejemplos de endpoints:
+        //      fetch('https://restcountries.com/v3.1/all?fields=name,flags')
+        //      fetch('https://restcountries.com/v3.1/name/spain')
+        //
+        // Muestra las banderas de paises con sus nombres en una web.
+    </script>
+</body>
+
+</html>

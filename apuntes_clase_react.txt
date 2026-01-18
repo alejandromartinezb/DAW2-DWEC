@@ -1,0 +1,13 @@
+es.react
+node.js
+	emulador de js
+vite.dev
+	compilador de varios lenguajes
+
+nvm windows
+	node version manager
+
+
+spa
+	single page application
+	pagina sin refresco general
