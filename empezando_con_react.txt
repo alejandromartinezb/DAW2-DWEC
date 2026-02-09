@@ -1,0 +1,36 @@
+es.react
+node.js
+	emulador de js
+	entorno completo en el que ejecutar js, por debajo es un entorno de chrome
+
+npm (node package manager)
+	gestor de paquetes de software libre
+
+nvm windows
+	node version manager
+	permite cambiar la versión de node
+
+vite.dev
+	compilador de varios lenguajes
+	empaqueta y compila el código en una versión de producción
+
+para crear una aplicación con react y compilarla con vite:
+	npm create vite@latest
+		JavaScript + SWC
+		NO rolldown-vite
+		SÍ dependencias
+
+spa
+	single page application
+	pagina sin refresco general
+	gracias a React, solo refrescamos la parte de la página que requiere el cambio
+
+para iniciar la aplicación en un servidor de pruebas:
+	npm run dev
+
+
+algunas configuraciones a tener en cuenta:
+	En main.jsx
+	importar ScrictMode de React
+	importar createRoot de react-dom
+

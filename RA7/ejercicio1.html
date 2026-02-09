@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA7 - Ejercicio 1</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #c6e4ef;
+        }
+
+        th {
+            background-color: #c6e4ef;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-bottom: 20px;">
+        <input type="text" id="input-busqueda" placeholder="Buscar por nombre...">
+        <button id="btn-buscar">Buscar</button>
+    </div>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Calle</th>
+                <th>Ciudad</th>
+            </tr>
+        </thead>
+        <tbody id="contenido-tabla">
+            <!-- Datos insertados desde script -->
+        </tbody>
+    </table>
+
+    <script src="./ej1.js"></script>
+    <script src="../paginacion.js"></script>
+</body>
+
+</html>

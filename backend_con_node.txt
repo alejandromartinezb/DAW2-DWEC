@@ -1,0 +1,68 @@
+Backend con express
+
+Arrancar un nuevo proyecto de 0
+    npm init
+        entrypoint: server.js
+    Esto genera un package.json con dependencias y configuraciones
+
+Instalar dependencias de express
+    expressjs.com
+    npm install express --save
+
+    Esto añade el objeto dependencies al json
+    También genera un package-lock.son con las versiones instaladas 
+
+Instalación de CORS (Cross-Origin Resource Sharing)
+    npm install cors
+
+En nuestro server.js
+    importamos express y cors
+    const express = require('express');
+
+    const app = express();
+    const PORT = 3000;
+
+
+    
+    app.get('/', (req, res) => {
+        res.json({
+        mensaje: 'Hola Mundo'
+        });
+    });
+
+
+    app.listen(PORT, () => {
+        console.log("Backend usado en el puerto: " + PORT);
+    });
+
+
+Hay que insertar al principio un Middleware 
+    app.use(cors());
+    app.use(express.json());
+
+Instalar en VSCode la extensión Postman
+
+    (Volver a ver la clase para ver cómo se empieza y se configura)
+
+En la url se usa URL Encoded
+URL Encoder()
+%20 es el espacio
+
+GET http://localhost:3000/parametro?param1=Hola%20Mundo
+
+Para enviar datos con el protocolo POST (más seguro, usado sobre todo en formularios)
+hay que enviarlos por Body y no por params
+Body - raw
+
+
+OTRA FORMA DE HACER Esto
+    Exportar la variable app en server.js e importarla en nuestro src api.js (le cambia el nombre a api.js)
+    
+    Hay diferencia entre trabajar en common js y en módulos
+    en common js el codigo js se ejecuta como un archivo normal
+    en módulos puedes import y export esos archivos como si fuera una app java o python
+    vas importando lo que necesitas
+
+
+SE PUEDEN CAMBIAR LOS STATUS DEL SERVIDOR PREDETERMINADOS
+    cambiar las respuestas de los errores (402, 404 etc)

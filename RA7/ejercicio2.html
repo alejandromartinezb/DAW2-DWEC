@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA7 - Ejercicio 2</title>
+
+    <style>
+        #bicicletas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .bici-bloque img {
+            max-width: 350px;
+            height: auto;
+        }
+
+        .bici-bloque p {
+            margin: 5px 0;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+    <select id="cat-select">
+        <option value="">Todas</option>
+        <option value="Carretera">Carretera</option>
+        <option value="Gravel">Gravel</option>
+        <option value="MTB">MTB</option>
+    </select>
+
+    <div id="bicicletas">
+        <!-- Datos de la API aquí -->
+    </div>
+    <script src="./ej2.js"></script>
+    <script src="../paginacion.js"></script>
+</body>
+
+</html>
