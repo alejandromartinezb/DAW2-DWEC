@@ -51,3 +51,7 @@ document.addEventListener('click', (e) => {
 })
 
 map.on('click', onMapClick);
+
+// Comentario de línea para tarea de DAW RA6: Control de versiones
+
+console.log("Prueba de rama");

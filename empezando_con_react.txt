@@ -34,3 +34,6 @@ algunas configuraciones a tener en cuenta:
 	importar ScrictMode de React
 	importar createRoot de react-dom
 
+12/02/2026
+Mirar para qué sirve dotenv e instalarlo
+Usar VITE para variables de entorno

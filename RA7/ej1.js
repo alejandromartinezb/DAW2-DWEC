@@ -19,7 +19,10 @@ function pintarUsuario(usuario) {
 
 // Petición AJAX para obtener datos JSON
 fetch(url)
-    .then(response => response.json()) // Convierte la respuesta a objeto JSON
+    .then(response => {
+        console.log(response); // El objeto de respuesta completo (status, headers, etc.)
+        return response.json(); // Convierte la respuesta a objeto JSON
+    }) // Convierte la respuesta a objeto JSON
     .then(data => {
         allUsers = data; // Creamos copia para usarla más adelante
         console.log(data); // Para poder ver los datos
@@ -33,6 +36,7 @@ fetch(url)
     .catch(error => console.error('Error al cargar datos:', error));
 
 
+// Lógica del botón "buscar"
 const btn_buscar = document.getElementById("btn-buscar");
 btn_buscar.addEventListener("click", () => {
     // Limpiar tabla

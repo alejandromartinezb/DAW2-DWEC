@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas Leaflet</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+
+        .btn-pop {
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 8px;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .btn-del {
+            background-color: #3498db;
+        }
+
+        /* Azul - Eliminar */
+        .btn-res {
+            background-color: #e74c3c;
+        }
+
+        /* Rojo - Reservar */
+        .btn-can {
+            background-color: #2ecc71;
+        }
+
+        /* Verde - Cancelar */
+        .popup-title {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>📍 Prueba sitios BlaBlaPark</h2>
+    <p>Haz <b>clic en el mapa</b> para crear tus propias puntos de aparcar. Interactúa con los puntos para reservar o
+        cancelar.</p>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([40.4167, -3.7037], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        // --- Configuración de Iconos ---
+        const getIcon = (color) => new L.Icon({
+            iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`,
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
+        });
+
+        // --- Lógica de Puntos ---
+
+        // 1. Crear punto azul al hacer clic en el mapa
+        map.on('click', function (e) {
+            createBlueMarker(e.latlng);
+        });
+
+        function createBlueMarker(latlng) {
+            const marker = L.marker(latlng, { icon: getIcon('blue') }).addTo(map);
+            marker.bindPopup(`
+                <b class="popup-title">Aparcamiento Creado</b>
+                <button class="btn-pop btn-del" onclick="deleteMarker(${marker._leaflet_id})">Eliminar aparcamiento</button>
+            `);
+        }
+
+        // 2. Crear puntos rojos iniciales (Disponibles)
+        const puntosIniciales = [
+            [40.418, -3.705],
+            [40.412, -3.715]
+        ];
+
+        puntosIniciales.forEach(coords => createRedMarker(L.latLng(coords)));
+
+        function createRedMarker(latlng) {
+            const marker = L.marker(latlng, { icon: getIcon('red') }).addTo(map);
+            marker.bindPopup(`
+                <b class="popup-title">Aparcamiento Disponible</b>
+                <button class="btn-pop btn-res" onclick="reserveMarker(${marker._leaflet_id})">Reservar</button>
+            `);
+        }
+
+        function createGreenMarker(latlng) {
+            const marker = L.marker(latlng, { icon: getIcon('green') }).addTo(map);
+            marker.bindPopup(`
+                <b class="popup-title">Tu Reserva</b>
+                <button class="btn-pop btn-can" onclick="cancelReservation(${marker._leaflet_id})">Cancelar Reserva</button>
+            `);
+        }
+
+        // --- Acciones de Botones ---
+
+        function deleteMarker(id) {
+            map.removeLayer(map._layers[id]);
+        }
+
+        function reserveMarker(id) {
+            const oldMarker = map._layers[id];
+            const pos = oldMarker.getLatLng();
+            map.removeLayer(oldMarker);
+            createGreenMarker(pos);
+            alert("¡Reserva confirmada!");
+        }
+
+        function cancelReservation(id) {
+            const oldMarker = map._layers[id];
+            const pos = oldMarker.getLatLng();
+            map.removeLayer(oldMarker);
+            createRedMarker(pos);
+            alert("Reserva cancelada. El aparcamiento vuelve a estar disponible.");
+        }
+
+    </script>
+</body>
+
+</html>
