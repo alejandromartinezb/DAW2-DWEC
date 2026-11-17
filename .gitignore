@@ -1,0 +1,14 @@
+# Carpetas de pruebas o proyectos aparte
+PruebasTFG/
+
+# Apuntes o archivos sueltos que no quieres subir
+backend_con_node.txt
+empezando_con_react.txt
+index.html
+paginacion.js
+
+# Dependencias y archivos del sistema (siempre recomendados)
+node_modules/
+.env
+.DS_Store
+Thumbs.db
